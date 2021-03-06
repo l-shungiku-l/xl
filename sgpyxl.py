@@ -1,6 +1,7 @@
 import os
 import glob
 import sys
+
 # openpyxl is required
 import openpyxl as px
 
@@ -34,11 +35,11 @@ class SGBook:
     def save_and_close(self):
         self.workbook.save(self.filename)
         self.workbook.close()
-        print(self.filename + " has closed")
+        print(self.filename + " has been closed")
 
     def close(self):
         self.workbook.close()
-        print(self.filename + " has closed")
+        print(self.filename + " has been closed")
 
 
 class SGSheet:
