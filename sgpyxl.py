@@ -29,9 +29,6 @@ class SGBook:
     def get_sheet_list(self):
         return self.workbook.sheetnames
 
-    def print_sheet_list(self):
-        print(self.get_sheet_list())
-
     def save_and_close(self):
         self.workbook.save(self.filename)
         self.workbook.close()
@@ -61,14 +58,18 @@ class SGSheet:
         return os.path.splitext(self.cell(y, x).value)[0]
 
     def get_row(self, y, x) -> list:
-        return [
+        row = [
             c[0].value for c in self.sheet.iter_cols(min_row=y, max_row=y, min_col=x)
         ]
+        self._remove_last_none(row)
+        return row
 
     def get_col(self, y, x) -> list:
-        return [
+        col = [
             c[0].value for c in self.sheet.iter_rows(min_row=y, min_col=x, max_col=x)
         ]
+        self._remove_last_none(col)
+        return col
 
     def get_all_cells(self) -> list:
         list_2d = []
@@ -88,3 +89,8 @@ class SGSheet:
         for y, row in enumerate(list_2d):
             for x, cell in enumerate(row):
                 self.cell(start_row + y, start_col + x).value = list_2d[y][x]
+
+    def _remove_last_none(self, list_1d):
+        if list_1d[-1] == None:
+            del list_1d[-1]
+            self._remove_last_none(list_1d)
