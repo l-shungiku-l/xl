@@ -1,4 +1,4 @@
-# sgpyxl --interface of openpyxl--
+# sgpyxl --easier way to use openpyxl--
 
 ## Concept
 
