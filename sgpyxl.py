@@ -1,8 +1,6 @@
 import os
 import glob
 import sys
-
-# openpyxl is required
 import openpyxl as px
 
 
