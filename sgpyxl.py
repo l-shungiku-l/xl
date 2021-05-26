@@ -10,9 +10,9 @@ def recursively_get_file(dirname: str) -> list:
 
 
 class SGBook:
-    def __init__(self, filename: str) -> None:
+    def __init__(self, filename: str, *, vba=False, dataonly=False) -> None:
         self.filename = filename
-        self.workbook = px.load_workbook(filename, keep_vba=True, data_only=True)
+        self.workbook = px.load_workbook(filename, keep_vba=vba, data_only=dataonly)
 
     def sheet(self, target_sheetname: str):
         sheet_list = self.get_sheet_list()
@@ -73,6 +73,26 @@ class SGSheet:
         list_2d = []
         for row in self.sheet.iter_rows():
             list_2d.append([c.value for c in row])
+
+        # remove unnecessary col
+        flg = True
+        while flg == True:
+            for i in [r[-1] for r in list_2d]:
+                if i != None:
+                    flg = False
+            if flg == True:
+                for i in range(len(list_2d)):
+                    del list_2d[i][-1]
+
+        # remove unnecessary row
+        flg = True
+        while flg == True:
+            for i in list_2d[-1]:
+                if i != None:
+                    flg = False
+            if flg == True:
+                del list_2d[-1]
+
         return list_2d
 
     def write_row(self, list_1d: list, start_row: int, start_col: int) -> None:
