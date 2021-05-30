@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import sgpyxl as xl
 
 wb = xl.SGBook("./example/example.xlsx")

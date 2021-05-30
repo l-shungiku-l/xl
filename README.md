@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # sgpyxl --easier way to use openpyxl--
 
 ## Concept
@@ -47,7 +46,9 @@ wb.save_and_close()
 # [7, 8, 9]
 # ./example/example.xlsx has been closed
 ```
+
 =======
+
 # sgpyxl --easier way to use openpyxl--
 
 ## Concept
@@ -96,4 +97,5 @@ wb.save_and_close()
 # [7, 8, 9]
 # ./example/example.xlsx has been closed
 ```
->>>>>>> origin/main
+
+> > > > > > > origin/main
